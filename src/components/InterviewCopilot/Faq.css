@@ -1,0 +1,213 @@
+/* General Styles */
+.faq-container {
+  position: relative;
+  /* Removed display, justify-content, align-items since they're in Tailwind */
+  min-height: 100vh;
+  /* background removed since it's in JSX */
+  background-size: cover;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+/* Removed .bg-decor-circle and its related classes since bubbles are gone */
+/* .bg-decor-circle {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent);
+  border-radius: 50%;
+  animation: twinkle 4s infinite ease-in-out;
+}
+
+.bg-decor-circle.top-10 {
+  top: 10%;
+}
+
+.bg-decor-circle.bottom-20 {
+  bottom: 20%;
+} */
+
+/* Removed .noise-overlay since it was part of the bubble effect */
+/* .noise-overlay {
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+} */
+
+.faq-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.faq-heading {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(to right, #8b5cf6, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq-item {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(10px);
+  opacity: 0;
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.faq-item:nth-child(odd) {
+  animation-delay: calc(0.1s * var(--i));
+}
+
+.faq-item.active {
+  background: linear-gradient(135deg, #f3e8ff, #dbeafe);
+  transform: scale(1.02);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4c1d95;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  background: rgba(139, 92, 246, 0.1);
+  color: #7c3aed;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: #6b21a8;
+  transition: transform 0.3s ease;
+}
+
+.icon.rotate {
+  transform: rotate(45deg);
+  color: #3b82f6;
+}
+
+.faq-answer {
+  padding: 0 20px 20px;
+  font-size: 1.1rem;
+  color: #1e3a8a;
+  line-height: 1.8;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .faq-container {
+    padding: 30px 15px;
+  }
+
+  .faq-content {
+    padding: 30px;
+    max-width: 700px;
+  }
+
+  .faq-heading {
+    font-size: 2.25rem;
+  }
+
+  .faq-question {
+    font-size: 1.1rem;
+    padding: 16px;
+  }
+
+  .faq-answer {
+    font-size: 1rem;
+    padding: 0 16px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-container {
+    padding: 20px 10px;
+  }
+
+  .faq-content {
+    padding: 20px;
+  }
+
+  .faq-heading {
+    font-size: 1.75rem;
+  }
+
+  .faq-question {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .faq-answer {
+    font-size: 0.9rem;
+    padding: 0 12px 12px;
+  }
+}

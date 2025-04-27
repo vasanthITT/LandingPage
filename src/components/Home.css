@@ -1,0 +1,10 @@
+
+.logo a{
+    font-family: "Montserrat", serif;
+    /* font-size: 22px; */
+    font-weight: 600;
+}
+.nav-menu li a{
+    font-family: "Montserrat", serif;
+    font-size: 10px;
+}
